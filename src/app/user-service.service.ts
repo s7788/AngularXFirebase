@@ -36,7 +36,7 @@ export class UserServiceService {
     this.afAuth.authState.subscribe(_auth => {
       if (_auth) {
         this.name = _auth.displayName;
-        console.log('已登入');
+        console.log('已登入21313');
       }
     });
   }
