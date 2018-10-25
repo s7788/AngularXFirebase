@@ -1,3 +1,4 @@
+<!--
 <div *ngIf="user.uid | async as uid; else login">
   The user is logged in {{uid}}
   <div *ngIf="isAdmin | async">The user also has Admin superpowers.</div>
@@ -6,3 +7,16 @@
 <ng-template #login>
   You need to login: <button (click)="user.login()">Login</button>
 </ng-template>
+-->
+<div class="row columns">
+    <button (click)="user.login()" *ngIf="!user.name">Login</button>
+  
+    <input type="text" id="message" *ngIf="user.name" placeholder="Chat here..." [(ngModel)]="Msg" />
+    <br>
+    <button *ngIf="user.name" (click)="sendMsg()">Send</button>
+    <button *ngIf="user.name" (click)="user.logout() ">Logout</button>
+      <div class="chat-container" *ngFor="let item of items">
+        <a href="#">{{item.Name}}</a>
+        <p>{{item.Message}}</p>
+      </div>
+  </div>

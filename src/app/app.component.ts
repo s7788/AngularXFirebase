@@ -10,14 +10,17 @@ import { UserServiceService } from './user-service.service';
 })
 export class AppComponent {
   items: any[];
-  constructor(public user: UserServiceService) {
-    /*
-    db.list('/item').valueChanges()
-    .subscribe(item => {
-      this.items = item;
-      console.log(this.items);
-    });
-      */
+  Msg;
+  constructor(public user: UserServiceService,
+    private db: AngularFireDatabase) {
+
+     this.db.list(`/log`).valueChanges()
+     .subscribe(log => {
+       this.items = log;
+     });
   }
-  title = 'AngularXFirebase';
+  sendMsg() {
+    this.user.chatSend(this.Msg);
+    this.Msg = '';
+  }
 }
